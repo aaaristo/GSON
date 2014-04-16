@@ -1,0 +1,28 @@
+{
+  "name": "gson",
+  "version": "0.1.0",
+  "description": "Serialize circular javascript object graphs",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/aaaristo/GSON.git"
+  },
+  "keywords": [
+    "javascript",
+    "object",
+    "circular",
+    "graph",
+    "serialize"
+  ],
+  "author": "aaaristo",
+  "license": "Apache2",
+  "bugs": {
+    "url": "https://github.com/aaaristo/GSON/issues"
+  },
+  "dependencies": {
+    "circularjs": "~0.1.0"
+  }
+}
