@@ -1,6 +1,6 @@
 {
   "name": "gson",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Serialize circular javascript object graphs",
   "main": "index.js",
   "scripts": {
