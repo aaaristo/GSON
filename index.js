@@ -27,7 +27,7 @@ exports.encode= function (orig,skipDelete)
              {
                 var val= node[key];
 
-                if (val&&typeof val=='object')
+                if (val&&traverse.isNode(val))
                   o[key]= { _: val.__visited };
                 else
                   o[key]= val;
@@ -35,7 +35,7 @@ exports.encode= function (orig,skipDelete)
            else
              node.forEach(function (val,key)
              {
-                if (val&&typeof val=='object')
+                if (val&&traverse.isNode(val))
                   o[key]= { _: val.__visited };
                 else
                   o[key]= val;
@@ -61,7 +61,7 @@ exports.decode= function (encoded)
            if (Array.isArray(node))
              node.forEach(function (val,key)
              {
-                if (val&&typeof val=='object')
+                if (val&&traverse.isNode(val))
                   node[key]= encoded[val._];
              });
            else
@@ -69,7 +69,7 @@ exports.decode= function (encoded)
              {
                 var val= node[key];
 
-                if (val&&typeof val=='object')
+                if (val&&traverse.isNode(val))
                   node[key]= encoded[val._];
              });
       });
