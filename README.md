@@ -3,7 +3,7 @@ GSON
 
 Serialize circular javascript object graphs,
 using [circularjs](https://github.com/aaaristo/circularjs) to
-traverse them.
+traverse them in a non-recusive way.
 
 ```
 npm install gson
