@@ -20,5 +20,5 @@ a.daughter= e;
 e.dad= a;
 
 console.log(GSON.decode(GSON.encode(a)));
-console.log(GSON.parse(GSON.serialize(a)));
+console.log(GSON.parse(GSON.stringify(a)));
 ```
