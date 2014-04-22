@@ -2,7 +2,7 @@ var traverse   = require('circularjs');
 
 exports.encode= function (orig,skipDelete)
 {
-    var _root, known= [], nodes= [], keyss= [];
+    var known= [], nodes= [], keyss= [];
 
     if (traverse.isNode(orig))
     {
@@ -19,8 +19,6 @@ exports.encode= function (orig,skipDelete)
         nodes.forEach(function (node,idx)
         {
            var o= known[node.__visited], keys= keyss[idx];
-
-           if (!_root) _root= node.__visited;
 
            if (keys)
              keys.forEach(function (key)
