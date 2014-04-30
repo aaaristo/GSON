@@ -13,9 +13,9 @@ var cir= function ()
 
         return [a,3,[e,a]];
     },
-    clone= function (o)
+    clone= function (o,fn)
     {
-        return GSON.parse(GSON.stringify(o));
+        return GSON.parse(GSON.stringify(o),fn);
     };
 
 describe('GSON',function ()
@@ -60,6 +60,14 @@ describe('GSON',function ()
           _clone[2][0].should.equal(_clone[0].figlia);
           _clone[2][0].should.equal(_clone[0].figlia2);
           _clone[2][0].papa.should.equal(_clone[0]);
+          done();
+       });
+
+       it('should call eachNode callback for each node', function (done)
+       {
+          var n= 0, orig= cir(), _clone= clone(orig,function (node) { should.exist(node); n++; });
+
+          n.should.equal(4);
           done();
        });
 });

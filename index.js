@@ -50,11 +50,11 @@ exports.encode= function (orig,skipDelete)
 
 };
 
-exports.decode= function (encoded)
+exports.decode= function (encoded,eachNode)
 {
   if (Array.isArray(encoded))
   {
-      encoded.forEach(function (node,idx)
+      var fn= function (node,idx)
       {
            if (Array.isArray(node))
              node.forEach(function (val,key)
@@ -70,7 +70,19 @@ exports.decode= function (encoded)
                 if (val&&traverse.isNode(val))
                   node[key]= encoded[val._];
              });
-      });
+      };
+
+      if (eachNode)
+        fn= (function (fn)
+            {
+               return function (node,idx)
+               {
+                    eachNode(node);
+                    fn(node,idx);
+               };
+            })(fn); 
+
+      encoded.forEach(fn);
 
       return encoded[0];
   } 
@@ -83,7 +95,7 @@ exports.stringify= function (orig)
    return JSON.stringify(exports.encode(orig));
 };
 
-exports.parse= function (s)
+exports.parse= function (s,eachNode)
 {
-   return exports.decode(JSON.parse(s));
+   return exports.decode(JSON.parse(s),eachNode);
 };
