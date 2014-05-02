@@ -22,3 +22,9 @@ e.dad= a;
 console.log(GSON.decode(GSON.encode(a)));
 console.log(GSON.parse(GSON.stringify(a)));
 ```
+
+## Huge graph serialization
+
+When you have graphs of some million nodes it may be necessary
+to hand-off serialization to somenthing out of the V8 heap,
+for this reason i've written [gsonpp](https://github.com/aaaristo/gsonpp).
